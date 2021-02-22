@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage("Init"){
+            parallel {
+            stage("Hello"){
+                agent {docker { image 'python:3-alpine3.13' }}
+                steps{
+                    sh 'python3 src/hello.py'
+                }
+            }
+            stage("wait 30 seconds"){
+                steps{
+                    sh 'sleep 30'
+                    build job:'test', wait : false
+                }
+            }
+        }
+        }
+
+
+    }
+}
+
+
