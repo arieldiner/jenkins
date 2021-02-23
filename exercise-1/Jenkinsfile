@@ -12,7 +12,7 @@ pipeline {
             stage("wait 30 seconds"){
                 steps{
                     sh 'sleep 30'
-                    build job:'test', wait : false
+                    build job:'Hello-Iguazio', wait : false
                 }
             }
         }
