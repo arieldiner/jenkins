@@ -4,9 +4,8 @@ pipeline {
         stage("Init"){
             parallel {
             stage("Hello"){
-                agent {docker { image 'python:3-alpine3.13' }}
+                agent {docker { image 'mypython:v1' }}
                 steps{
-		    sh 'pip3 install requests'
                     sh 'python3 src/hello.py'
                 }
             }
